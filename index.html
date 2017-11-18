@@ -8,75 +8,26 @@
 
   <!-- Load MDL Library and fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-teal.min.css" />
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-amber.min.css" />
 
-  <title>Alternativa para o Sky56</title>
+  <title>Hello world!</title>
 </head>
 
 <body>
   <div class="mdl-layout mdl-js-layout mdl-layout--no-drawer-button">
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
-        <span class="mdl-layout__title">Sky56 melhorado</span>
+        <span class="mdl-layout__title">Hello world</span>
         <div class="mdl-layout-spacer"></div>
       </div>
     </header>
     <main class="mdl-layout__content">
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col"></div>
-        <div class="mdl-cell mdl-cell--6-col">
-
-        </div>
-        <div class="mdl-cell mdl-cell--3-col"></div>
       </div>
     </main>
   </div>
 
-  <!-- Black Magic -->
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <script>
-    function refresh() {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // Load the thing
-          var obj = JSON.parse(this.responseText);
-          var thing = obj.with[0];
-          document.querySelector("#thing").innerHTML = thing.thing;
-
-          // Process CPU
-          // var cpuInfo = "Usage by core: \n";
-          var cpuInfo = "";
-          for (i = 0; i < thing.content.cpuCount; i++) {
-            var cpu = "cpu" + i;
-
-            cpuInfo += '<li class="mdl-list__item">';
-            cpuInfo += ' <span class="mdl-list__item-primary-content">';
-            cpuInfo += '  <i class="material-icons">developer_board</i>';
-            cpuInfo += cpu + " - " + thing.content[cpu] + "%";
-            cpuInfo += '</span></li>\n';
-          }
-          document.querySelector("#cpuPerc").innerHTML = cpuInfo;
-
-          // Process Memory
-          var rawTotal = thing.content.memTotal;
-          var rawFree = thing.content.memFree;
-          var used = rawTotal - rawFree;
-          document.querySelector("#total").innerHTML = (rawTotal / 1048576).toFixed(2) + "MB";
-          document.querySelector("#free").innerHTML = (rawFree / 1048576).toFixed(2) + "MB";
-
-          var pct = (used / rawTotal) * 100;
-          document.querySelector("#memPct").MaterialProgress.setProgress(pct);
-        }
-      };
-      xhttp.open("GET", "https://dweet.io/get/latest/dweet/for/lagoMonitorV1", true);
-      xhttp.send();
-    };
-
-    //document.addEventListener("DOMContentLoaded", function(event) {
-    //  refresh();
-    //});
-  </script>
 </body>
 
 </html>
